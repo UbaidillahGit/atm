@@ -1,8 +1,16 @@
 # ATM CLI Application
-This is a command-line interface (CLI) application for simulating an ATM system. The application supports both automated and manual modes for executing commands.
+This is a command-line interface (CLI) application for simulating an ATM system. 
+
+The application supports both automated and manual modes for executing commands.
 
 # Prerequisites
 Dart SDK installed and available in the system's PATH.
+
+# Running the CLI app
+Open the project into any command line tools, make sure you on the root project.
+
+input `./start.sh` then enter, you would see `Welcome to the ATM CLI!` as the opening text
+
 
 # Commands
 The following commands are supported:
