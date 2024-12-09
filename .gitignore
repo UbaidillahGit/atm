@@ -4,6 +4,7 @@
 .packages
 .pub/
 build/
+.pubspec.yaml
 
 # IDE specific
 .idea/

@@ -18,11 +18,15 @@ The following commands are supported:
 # Example automated commands
 List of automated commands can be found at library/list_of_automated_cmd.dart
 
+# Test
+There is a folder test to run for unit-testing, it's required third-party frameworks like [tests] to be installed with a provided pubspec.yaml file.
+Since the instruction prohibited for any third-party, this tests is optional.
+
 ## Project Structure
-atm_simulation/
+atm/
 ├── bin/
 │   └── main_atm.dart
-├── lib/
+├── library/
 │   ├── commands/
 │   │   ├── balance_cmd.dart
 │   │   ├── deposit_cmd.dart
@@ -32,11 +36,10 @@ atm_simulation/
 │   │   ├── transfer_cmd.dart
 │   │   └── withdraw_cmd.dart
 │   ├── customer_model.dart
+│   ├── list_of_automated_cmd.dart
 │   └── printer/
 │       └── handle_print.dart
 ├── test/
 │   └── atm_test.dart
-├── pubspec.yaml
-├── pubspec.lock
 ├── start.sh
 └── README.md
