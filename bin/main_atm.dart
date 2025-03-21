@@ -24,15 +24,17 @@ import '../library/list_of_automated_cmd.dart';
 /// line.
 /// 
 void main() {
-  final atm = ATM();
+  Printer printer = ConsolePrinter();
+  final atm = ATM(printer: printer);
   // Ensure the data directory exists
+  // 
   Directory('data').createSync();
   
-  /// Open [runAutomated] to run CLI with automated commands
-  /// Open [run] to run the CLI with manual input
-  /// 
-  // atm.runAutomated(automatedCommands);
-  atm.run();
+  // Open [runAutomated] to run CLI with automated commands
+  // Open [run] to run the CLI with manual input
+  // 
+  atm.runAutomated(automatedCommands);
+  // atm.run();
 }
 
 /// [ATM] class represents an Automated Teller Machine (ATM) system.
@@ -54,7 +56,10 @@ void main() {
 class ATM {
   final Map<String, Customer> customers = {};
   Customer? loggedInCustomer;
-  Printer printer = ConsolePrinter();
+  // Printer printer = ConsolePrinter();
+  final Printer printer;
+
+  ATM({required this.printer});
 
   void run() {
     printer.printTxt('Welcome to the ATM CLI!');
@@ -68,6 +73,8 @@ class ATM {
   }
 
   void runAutomated(List<String> commands) {
+    printer.printTxt('Welcome to the ATM CLI!');
+    printer.printSpace();
     for (final command in commands) {
       printer.printTxt('\$ $command');
       handleCommand(command);

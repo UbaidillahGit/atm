@@ -35,7 +35,6 @@ class Customer {
     balance += amount;
     printer.printBalance(balance);
     printer.printSpace();
-    ;
   }
 
   void withdraw(int amount) {
@@ -53,8 +52,8 @@ class Customer {
     final amountOfOwedTo = owedTo.values.first;
     final remainingAmount = (amount - amountOfOwedTo);
 
-    /// If after transfer the amount still remaining, then deposit it to Current customer as balance
-    ///
+    // If after transfer the amount still remaining, then deposit it to Current customer as balance
+    //
     if (remainingAmount <= 0) {
       customer.balance += amount;
       owedTo[customer.name] = amount;
@@ -78,12 +77,14 @@ class Customer {
       return;
     }
 
-    /// Seperate the transfer case with these condition
-    ///
+
+    // Seperate the transfer case with these condition
+    //
     final sufficientBalance = (balance >= amount);
     final insufficientBalance = (balance <= amount && balance != 0);
     final noBalance = (balance == 0);
 
+    print('test_fired ${customer.name} | $amount | $sufficientBalance');
     if (sufficientBalance) {
       _handleSufficientBalanceTransfer(customer, amount);
     } else if (insufficientBalance) {
@@ -97,15 +98,15 @@ class Customer {
     if (owedFrom.containsKey(customer.name)) {
       final remainingAmountAfterTransfer = (owedFrom.values.first - amount);
       if (remainingAmountAfterTransfer >= 0) {
+    // print('_handleSufficientBalanceTransfer_fired');
         owedFrom = {name: remainingAmountAfterTransfer};
         customer.owedTo = {name: remainingAmountAfterTransfer};
         printer.printBalance(balance);
         printer.printOwedFrom(customer.name, remainingAmountAfterTransfer);
         printer.printSpace();
       } else {
-        /// Handle case when current Customer transfer to target Customer and have more amount than needed.
-        /// Reduce [owedFrom] amount to target first, that add
-        /// 
+        // Handle case when current Customer transfer to target Customer and have more amount than needed.
+        // Reduce [owedFrom] amount to target first, that add
         customer.owedTo.clear();
         customer.balance += remainingAmountAfterTransfer.abs();
         balance -= remainingAmountAfterTransfer.abs();
@@ -124,7 +125,6 @@ class Customer {
   }
 
   /// Handle transfer with no balance, the method more handling on [OwedTo] and [OwedFrom] change
-  /// 
   void _handleInsufficientBalanceTransfer(Customer customer, int amount) {
     final amountOfOwedToTarget = (amount - balance);
     final amountAbleToTransfer = balance;
@@ -132,6 +132,7 @@ class Customer {
     balance = 0;
     owedTo[customer.name] = amountOfOwedToTarget;
     customer.owedFrom = {name: amountOfOwedToTarget};
+    print('_handleInsufficientBalanceTransfer_fired | $amountAbleToTransfer | ${customer.name}');
     printer.printTransfer(amountAbleToTransfer, customer.name);
     printer.printBalance(balance);
     printer.printOwedTo(customer.name, amountOfOwedToTarget);
@@ -142,18 +143,15 @@ class Customer {
 
     if (owedFrom.containsKey(customer.name)) {
 
-      /// Calculation 
-      /// 
+      // Calculation
       int? amountOfOwedFrom = owedFrom[customer.name]!;
       int? amountOfOwedTo = customer.owedTo[name]!;
 
-      /// OwedFrom operation 
-      /// 
+      // OwedFrom operation
       amountOfOwedFrom -= amount;
       owedFrom = {customer.name: amountOfOwedFrom};
       
-      /// OwedTo operation 
-      /// 
+      // OwedTo operation
       amountOfOwedTo -= amount;
       if (amountOfOwedTo == 0) {
         customer.owedTo.clear();
@@ -161,8 +159,7 @@ class Customer {
         customer.owedTo[name] = amountOfOwedTo;
       }
 
-      /// Print section
-      /// 
+      // Print section
       printer.printTransfer(amount, customer.name);
       printer.printBalance(balance);
       printer.printOwedFrom(customer.name, owedFrom.values.first);

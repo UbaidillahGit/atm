@@ -57,3 +57,8 @@ final automatedCommands4 = [
   'logout',
   'login Alice'
 ];
+
+final automatedCommands5 = [
+  'login Alice',
+  'transfer   90'
+];
