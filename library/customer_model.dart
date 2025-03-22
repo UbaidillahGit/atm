@@ -84,7 +84,6 @@ class Customer {
     final insufficientBalance = (balance <= amount && balance != 0);
     final noBalance = (balance == 0);
 
-    print('test_fired ${customer.name} | $amount | $sufficientBalance');
     if (sufficientBalance) {
       _handleSufficientBalanceTransfer(customer, amount);
     } else if (insufficientBalance) {
@@ -98,7 +97,6 @@ class Customer {
     if (owedFrom.containsKey(customer.name)) {
       final remainingAmountAfterTransfer = (owedFrom.values.first - amount);
       if (remainingAmountAfterTransfer >= 0) {
-    // print('_handleSufficientBalanceTransfer_fired');
         owedFrom = {name: remainingAmountAfterTransfer};
         customer.owedTo = {name: remainingAmountAfterTransfer};
         printer.printBalance(balance);
@@ -132,7 +130,6 @@ class Customer {
     balance = 0;
     owedTo[customer.name] = amountOfOwedToTarget;
     customer.owedFrom = {name: amountOfOwedToTarget};
-    print('_handleInsufficientBalanceTransfer_fired | $amountAbleToTransfer | ${customer.name}');
     printer.printTransfer(amountAbleToTransfer, customer.name);
     printer.printBalance(balance);
     printer.printOwedTo(customer.name, amountOfOwedToTarget);

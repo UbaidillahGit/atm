@@ -28,9 +28,9 @@ List of automated commands can be found at library/list_of_automated_cmd.dart
 
 # Test
 There is a folder test to run for unit-testing, it's required third-party frameworks like [tests] to be installed with a provided pubspec.yaml file.
-Since the instruction prohibited for any third-party, this tests is optional.
 
 ## Project Structure
+```plaintext
 atm/
 ├── bin/
 │   └── main_atm.dart

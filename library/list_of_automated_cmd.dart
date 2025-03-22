@@ -1,19 +1,19 @@
 
 // List of command based on attached example case
 final automatedCommands = [
-  'login Alice',
+  'login Elon',
   'deposit 100',
   'logout',
-  'login Bob',
+  'login Mark',
   'deposit 80',
-  'transfer Alice 50',
-  'transfer Alice 100',
+  'transfer Elon 50',
+  'transfer Elon 100',
   'deposit 30',
   'logout',
-  'login Alice',
-  'transfer Bob 30',
+  'login Elon',
+  'transfer Mark 30',
   'logout',
-  'login Bob',
+  'login Mark',
   'deposit 100',
   'logout'
 ];
